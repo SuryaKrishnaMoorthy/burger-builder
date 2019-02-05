@@ -5,6 +5,7 @@ import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary"
 import axios from "../../axios-orders";
+import withErrorHandler from "../../hoc/WithErrorHandler/WithErrorHandler";
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -23,7 +24,8 @@ class BurgerBuilder extends Component {
         },
         totalPrice: 4,
         purchasable: false,
-        purchasing: false
+        purchasing: false,
+        loading: false
     }
 
     updatePurchaseState = (ingredients) => {
@@ -86,7 +88,7 @@ class BurgerBuilder extends Component {
         // alert('Contine...')
         // for firebase use orders and json as suffix.
         // in firebase orders is created
-
+        this.setState({ loading: true })
         const order = {
             ingredients: this.state.ingredients,
             price: this.state.totalPrice.toFixed(2),
@@ -106,6 +108,8 @@ class BurgerBuilder extends Component {
         .then(response => console.log(response))
         .catch(error => console.log(error));
     }
+
+
 
     render(){        
         const disabledInfo = {
@@ -137,4 +141,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder, axios);
