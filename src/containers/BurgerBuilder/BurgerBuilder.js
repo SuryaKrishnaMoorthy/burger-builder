@@ -99,34 +99,33 @@ class BurgerBuilder extends Component {
         // alert('Contine...')
         // for firebase use orders and json as suffix.
         // in firebase orders is created
-        this.setState({ loading: true })
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice.toFixed(2),
-            customer: {
-                name: "Surya Krishna Moorthy",
-                address: {
-                    street: "Teststreet",
-                    zipCode: "12345",
-                    country: "USA"
-                },
-                email: "test@test.com",
-            },
-            deliveryMethod: "fastest"
-        }
+        // this.setState({ loading: true })
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice.toFixed(2),
+        //     customer: {
+        //         name: "Surya Krishna Moorthy",
+        //         address: {
+        //             street: "Teststreet",
+        //             zipCode: "12345",
+        //             country: "USA"
+        //         },
+        //         email: "test@test.com",
+        //     },
+        //     deliveryMethod: "fastest"
+        // }
 
-        axios.post("/orders.json", order)
-        .then(response => {
-            console.log(response);
-            this.setState({ loading: false, purchasing: false })
-        })
-        .catch(error => {
-            console.log(error);
-            this.setState({ loading: false,  purchasing: false })
-        });
+        // axios.post("/orders.json", order)
+        // .then(response => {
+        //     console.log(response);
+        //     this.setState({ loading: false, purchasing: false })
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        //     this.setState({ loading: false,  purchasing: false })
+        // });
+        this.props.history.push("/checkout");  
     }
-
-
 
     render(){        
         const disabledInfo = {
