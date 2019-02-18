@@ -11,7 +11,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import {addIngredient, removeIngredient, initIngredients, purchaseInit, setAuthRedirect} from "../../store/actions/index";
 import axios from "../../axios-orders";
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
     state = {
         purchasing: false,
     }
